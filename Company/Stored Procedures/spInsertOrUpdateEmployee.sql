@@ -15,11 +15,12 @@ BEGIN
 	END
 	ELSE
 	BEGIN
-		IF (@firstName IS NOT NULL) UPDATE Employee SET FirstName = @firstName WHERE id = @eid
-		IF (@lastName IS NOT NULL) UPDATE Employee SET LastName = @lastName WHERE id = @eid
-		IF (@birthday IS NOT NULL) UPDATE Employee SET Birthday = @birthday WHERE id = @eid
-		IF (@phone IS NOT NULL) UPDATE Employee SET Phone = @phone WHERE id = @eid
-		IF (@gender IS NOT NULL) UPDATE Employee SET Gender = @gender WHERE id = @eid
+		UPDATE Employee SET FirstName = ISNULL(@firstName, FirstName),
+			LastName = ISNULL(@lastName, LastName),
+			FirstName = ISNULL(@firstName, FirstName),
+			Birthday = ISNULL(@birthday, Birthday),
+			Phone = ISNULL(@phone, Phone),
+			Gender = ISNULL(@gender, Gender)
 	END
 	RETURN @@IDENTITY
 END

@@ -14,10 +14,10 @@ BEGIN
 	END
 	ELSE
 	BEGIN
-		IF (@name IS NOT NULL) UPDATE Company SET Name = @name WHERE id = @cid
-		IF (@description IS NOT NULL) UPDATE Company SET Name = @name WHERE id = @cid
-		IF (@foundedAt IS NOT NULL) UPDATE Company SET Name = @name WHERE id = @cid
-		IF (@branch IS NOT NULL) UPDATE Company SET Name = @name WHERE id = @cid
+		UPDATE Company SET Name = ISNULL(@name, Name),
+			Description = ISNULL(@description, Description),
+			FoundedAt = ISNULL(@foundedAt, FoundedAt),
+			Branch = ISNULL(@branch, Branch)
 	END
 	RETURN @cid
 END
