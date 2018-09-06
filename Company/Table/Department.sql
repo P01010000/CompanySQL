@@ -5,5 +5,7 @@
 	[Description] NVARCHAR(1024) NOT NULL,
 	[Supervisor] INT NOT NULL REFERENCES Employees(id),
 	[SuperDepartment] INT REFERENCES Department(Id),
-	[CompanyId] INT NOT NULL REFERENCES Company(Id)
+	[CompanyId] INT NOT NULL REFERENCES Company(Id), 
+    [CreationTime] DATETIME2 NOT NULL DEFAULT getDate(), 
+    [DeletionTime] DATETIME2 NULL
 )
