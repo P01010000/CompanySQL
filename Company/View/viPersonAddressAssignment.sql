@@ -1,5 +1,6 @@
 ﻿CREATE VIEW [dbo].[viPersonAddressAssignment]
 	AS SELECT PersonId,
 		Address,
-		Zip
+		Zip,
+		Country
 	FROM PersonAddressAssignment

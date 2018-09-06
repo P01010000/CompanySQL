@@ -6,4 +6,4 @@
 		SuperDepartment,
 		CompanyId
 	FROM [Department]
-	WHERE DeletionTime IS NULL
+	WHERE DeletedTime IS NULL

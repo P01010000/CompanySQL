@@ -5,7 +5,7 @@
 		e.FirstName,
 		e.Birthday,
 		e.Phone,
-		e.Gender,
+		udfGender(e.Gender) Gender,
 		e.EmployeeSince
 	FROM [Employee] e inner join Person p on e.id = p.EmployeeId
-	WHERE p.DeletionTime IS NULL
+	WHERE p.DeletedTime IS NULL

@@ -1,6 +1,4 @@
 ﻿CREATE VIEW [dbo].[viEmployeeDepartmentAssignment] AS
-	SELECT Id,
-		DepartmentId,
+	SELECT DepartmentId,
 		EmployeeId
 	FROM [EmployeeDepartmentAssignment]
-	WHERE DeletionTime IS NULL

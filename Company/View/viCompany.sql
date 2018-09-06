@@ -6,4 +6,4 @@
 		c.FoundedAt,
 		c.Branch
 	FROM [Company] c inner join Person p on c.id = p.CompanyId
-	WHERE p.DeletionTime IS NULL
+	WHERE p.DeletedTime IS NULL
