@@ -10,8 +10,7 @@ BEGIN
 	IF (@eid IS NULL OR (SELECT COUNT(*) FROM Employee WHERE Id = @eid) = 0)
 	BEGIN
 		INSERT INTO Employee(LastName, FirstName, Birthday, Phone, Gender) VALUES (@lastName, @firstName, @birthday, @phone, @gender)
-		SET @eid = @@IDENTITY
-		INSERT INTO Person (EmployeeId) VALUES (@eid)
+		SET @eid = SCOPE_IDENTITY()
 	END
 	ELSE
 	BEGIN
