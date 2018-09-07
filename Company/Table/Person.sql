@@ -1,8 +1,8 @@
 ﻿CREATE TABLE [dbo].[Person]
 (
-	[Id] INT NOT NULL PRIMARY KEY, 
+	[Id] INT NOT NULL PRIMARY KEY IDENTITY(1,1), 
     [CreationTime] DATETIME2 NOT NULL DEFAULT getDate(), 
     [DeletedTime] DATETIME2 NULL,
-	[CompanyId] INT REFERENCES Company(id),
-	[EmployeeId] INT REFERENCES Employee(id),
+	[CompanyId] INT REFERENCES Company(Id) ON UPDATE CASCADE,
+	[EmployeeId] INT REFERENCES Employee(Id) ON UPDATE CASCADE,
 )

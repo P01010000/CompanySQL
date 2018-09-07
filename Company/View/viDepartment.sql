@@ -1,9 +1,10 @@
 ﻿CREATE VIEW [dbo].[viDepartment] AS
-	SELECT id,
+	SELECT Id,
 		Name,
 		Description,
 		Supervisor,
 		SuperDepartment,
-		CompanyId
+		CompanyId,
+		CreationTime
 	FROM [Department]
 	WHERE DeletedTime IS NULL

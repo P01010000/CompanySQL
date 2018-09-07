@@ -1,0 +1,8 @@
+﻿CREATE TRIGGER [tr_CompanyA_I]
+ON dbo.Company
+AFTER INSERT
+AS
+BEGIN
+	DECLARE @Id INT = (SELECT Id FROM inserted)
+	INSERT INTO Person (CompanyId) VALUES (@Id)
+END

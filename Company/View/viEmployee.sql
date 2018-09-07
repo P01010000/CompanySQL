@@ -5,7 +5,8 @@
 		e.FirstName,
 		e.Birthday,
 		e.Phone,
-		udfGender(e.Gender) Gender,
-		e.EmployeeSince
-	FROM [Employee] e inner join Person p on e.id = p.EmployeeId
+		dbo.fnGender(e.Gender) Gender,
+		e.EmployeeSince,
+		p.CreationTime
+	FROM [Employee] e inner join Person p on e.Id = p.EmployeeId
 	WHERE p.DeletedTime IS NULL

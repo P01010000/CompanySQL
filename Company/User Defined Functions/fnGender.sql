@@ -1,4 +1,4 @@
-﻿CREATE FUNCTION [dbo].[udfGender]
+﻿CREATE FUNCTION [dbo].[fnGender]
 (
 	@genderId int
 )

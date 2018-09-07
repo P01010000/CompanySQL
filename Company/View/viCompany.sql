@@ -4,6 +4,7 @@
 		c.Name,
 		c.Description,
 		c.FoundedAt,
-		c.Branch
-	FROM [Company] c inner join Person p on c.id = p.CompanyId
+		c.Branch,
+		p.CreationTime
+	FROM [Company] c inner join Person p on c.Id = p.CompanyId
 	WHERE p.DeletedTime IS NULL

@@ -28,4 +28,18 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="DeletiedTime" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="760ec319-c197-48da-a82c-044a759a27df" ChangeDateTime="09/07/2018 08:16:21">
+    <Property Name="ElementName" Value="[dbo].[PersonAddressAssignment].[Country]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[PersonAddressAssignment]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="CountyCode" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="ef13ba82-ddb0-4340-b8d0-b431e44c196b" ChangeDateTime="09/07/2018 12:52:42">
+    <Property Name="ElementName" Value="[dbo].[PersonAddressAssignment].[Address]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[PersonAddressAssignment]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="AddressId" />
+  </Operation>
 </Operations>

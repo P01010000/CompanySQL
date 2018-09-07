@@ -2,15 +2,15 @@
 	@cid int,
 	@name nvarchar(256),
 	@description nvarchar(1024),
-	@foundedAt datetime2(7),
+	@foundedAt datetime,
 	@branch nvarchar(256)
 AS
 BEGIN
-	IF ( @cid IS NULL OR (SELECT id FROM Company WHERE id = @cid) IS NULL)
+	IF ( @cid IS NULL OR (SELECT Id FROM Company WHERE id = @cid) IS NULL)
 	BEGIN
 		INSERT INTO Company (Name, Description, FoundedAt, Branch) VALUES (@name, @description, @foundedAt, @branch)
-		SET @cid = @@IDENTITY
-		INSERT INTO Person (CompanyId) VALUES (@cid)
+		SET @cid = SCOPE_IDENTITY()
+		INSERT INTO Department (Name, Description, CompanyId) VALUES ( 'Management', 'Management', @cid)
 	END
 	ELSE
 	BEGIN
