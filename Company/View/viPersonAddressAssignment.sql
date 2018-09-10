@@ -2,7 +2,7 @@
 	AS SELECT paa.PersonId,
 		paa.AddressId,
 		dbo.fnAddressType(paa.Type) Type,
-		a.Address,
+		a.Street,
 		a.Zip,
 		z.Place,
 		dbo.fnCountry(a.CountryCode) Country

@@ -1,7 +1,7 @@
 ﻿CREATE PROCEDURE [dbo].[spInsertOrUpdateAddress]
 	@personId int,
 	@addressId int,
-	@address nvarchar(256),
+	@street nvarchar(256),
 	@zip nvarchar(16),
 	@place nvarchar(128),
 	@countryCode VARCHAR(4),
@@ -14,15 +14,15 @@ BEGIN
 	END
 	IF (@addressId IS NULL OR (SELECT Id FROM Address WHERE id = @addressId) IS NULL)
 	BEGIN
-		INSERT INTO Address(Address, Zip, CountryCode) VALUES (@address, @zip, @countryCode)
+		INSERT INTO Address(Street, Zip, CountryCode) VALUES (@street, @zip, @countryCode)
 		SET @addressId = SCOPE_IDENTITY()
 	END
 	ELSE
 	BEGIN
-		UPDATE Address SET Address = ISNULL(@address, Address),
+		UPDATE Address SET Street = ISNULL(@street, Street),
 			Zip = ISNULL(@zip, Zip),
 			CountryCode = ISNULL(@countrycode, CountryCode)
-			WHERE Id  = @addressId
+			WHERE Id = @addressId
 	END
 	IF (@personId IS NOT NULL AND @addressId IS NOT NULL)  INSERT INTO PersonAddressAssignment(PersonId, AddressId, Type) VALUES (@personId, @addressId, @type)
 	RETURN @addressId
