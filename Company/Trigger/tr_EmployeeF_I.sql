@@ -1,6 +1,6 @@
-﻿CREATE TRIGGER [tr_EmployeeA_I]
+﻿CREATE TRIGGER [tr_EmployeeF_I]
 ON dbo.Employee
-AFTER INSERT
+FOR INSERT
 AS
 BEGIN
 	DECLARE @Id INT = (SELECT Id FROM inserted)

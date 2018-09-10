@@ -19,6 +19,7 @@ BEGIN
 			Birthday = ISNULL(@birthday, Birthday),
 			Phone = ISNULL(@phone, Phone),
 			Gender = ISNULL(@gender, Gender)
+			WHERE Id = @eid
 	END
 	RETURN @eid
 END

@@ -18,6 +18,7 @@ BEGIN
 			Description = ISNULL(@description, Description),
 			FoundedAt = ISNULL(@foundedAt, FoundedAt),
 			Branch = ISNULL(@branch, Branch)
+			WHERE Id = @cid
 	END
 	RETURN @cid
 END

@@ -12,7 +12,7 @@ BEGIN
 	BEGIN
 		INSERT INTO Zip (Zip, CountryCode, Place) VALUES ( @zip, @countryCode, @place)
 	END
-	IF (@address IS NULL OR (SELECT Id FROM Address WHERE id = @addressId) IS NULL)
+	IF (@addressId IS NULL OR (SELECT Id FROM Address WHERE id = @addressId) IS NULL)
 	BEGIN
 		INSERT INTO Address(Address, Zip, CountryCode) VALUES (@address, @zip, @countryCode)
 		SET @addressId = SCOPE_IDENTITY()
@@ -22,6 +22,7 @@ BEGIN
 		UPDATE Address SET Address = ISNULL(@address, Address),
 			Zip = ISNULL(@zip, Zip),
 			CountryCode = ISNULL(@countrycode, CountryCode)
+			WHERE Id  = @addressId
 	END
 	IF (@personId IS NOT NULL AND @addressId IS NOT NULL)  INSERT INTO PersonAddressAssignment(PersonId, AddressId, Type) VALUES (@personId, @addressId, @type)
 	RETURN @addressId

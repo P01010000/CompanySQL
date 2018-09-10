@@ -5,4 +5,9 @@
     [DeletedTime] DATETIME2 NULL,
 	[CompanyId] INT REFERENCES Company(Id) ON UPDATE CASCADE,
 	[EmployeeId] INT REFERENCES Employee(Id) ON UPDATE CASCADE,
+	CHECK ((CompanyId IS NULL AND EmployeeId IS NOT NULL) OR (CompanyId IS NOT NULL AND EmployeeID IS NULL))
 )
+GO
+CREATE UNIQUE NONCLUSTERED INDEX PersonCompanyUnique ON Person (CompanyId) WHERE CompanyId IS NOT NULL
+GO
+CREATE UNIQUE NONCLUSTERED INDEX PersonEmployeeUnique ON Person (EmployeeId) WHERE EmployeeId IS NOT NULL

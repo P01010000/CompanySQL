@@ -10,7 +10,7 @@ BEGIN
 	IF (@did IS NULL OR (SELECT COUNT(*) FROM Employee WHERE Id = @did) = 0)
 	BEGIN
 		INSERT INTO Department(Name, Description, Supervisor, SuperDepartment, CompanyId) VALUES (@name, @description, @supervisor, @superDepartmemt, @companyId)
-		SET @did = @@IDENTITY
+		SET @did = SCOPE_IDENTITY()
 	END
 	ELSE
 	BEGIN
@@ -19,6 +19,7 @@ BEGIN
 			Supervisor = ISNULL(@supervisor, Supervisor),
 			SuperDepartment = ISNULL(@superDepartmemt, SuperDepartment),
 			CompanyId = ISNULL(@companyId, CompanyId)
+			WHERE Id = @did
 	END
 	RETURN @did
 END

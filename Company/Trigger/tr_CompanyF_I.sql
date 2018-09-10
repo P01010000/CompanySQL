@@ -1,6 +1,6 @@
-﻿CREATE TRIGGER [tr_CompanyA_I]
+﻿CREATE TRIGGER [tr_CompanyF_I]
 ON dbo.Company
-AFTER INSERT
+FOR INSERT
 AS
 BEGIN
 	DECLARE @Id INT = (SELECT Id FROM inserted)
