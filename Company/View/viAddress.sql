@@ -5,4 +5,4 @@
 		z.Place,
 		dbo.fnCountry(a.CountryCode) Country
 		FROM [Address] a
-		LEFT JOIN Zip z ON a.zip = z.zip AND a.CountryCode = z.CountryCode
+		LEFT JOIN Zip z ON a.Zip = z.Zip AND a.CountryCode = z.CountryCode
