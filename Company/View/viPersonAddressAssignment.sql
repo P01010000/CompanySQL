@@ -9,3 +9,4 @@
 	FROM PersonAddressAssignment paa
 	INNER JOIN Address a ON paa.AddressId = a.Id
 	INNER JOIN Zip z ON a.Zip = z.Zip AND a.CountryCode = z.CountryCode
+	WHERE a.DeletedTime IS NULL
