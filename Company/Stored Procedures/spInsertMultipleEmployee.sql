@@ -7,4 +7,5 @@ BEGIN
 	OUTPUT inserted.Id INTO @output
 	SELECT LastName, FirstName, Birthday, Phone, Gender, EmployeeSince FROM @employees
 	SELECT Id FROM @output
+	RETURN (SELECT COUNT(Id) FROM @output)
 END

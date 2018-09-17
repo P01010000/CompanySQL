@@ -4,5 +4,5 @@ FOR INSERT
 AS
 BEGIN
 	INSERT INTO Person (CompanyId)
-	SELECT Id FROM inserted
+	SELECT Id FROM inserted ORDER BY Id
 END
