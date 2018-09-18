@@ -1,16 +1,16 @@
 ﻿CREATE PROCEDURE [dbo].[spInsertOrUpdateCompany]
-	@cid int,
+	@id int,
 	@name nvarchar(256),
 	@description nvarchar(1024),
 	@foundedAt datetime,
 	@branch nvarchar(256)
 AS
 BEGIN
-	IF ( @cid IS NULL OR (SELECT Id FROM Company WHERE id = @cid) IS NULL)
+	IF ( @id IS NULL)
 	BEGIN
 		INSERT INTO Company (Name, Description, FoundedAt, Branch) VALUES (@name, @description, @foundedAt, @branch)
-		SET @cid = SCOPE_IDENTITY()
-		INSERT INTO Department (Name, Description, CompanyId) VALUES ( 'Management', 'Management', @cid)
+		SET @id = SCOPE_IDENTITY()
+		INSERT INTO Department (Name, Description, CompanyId) VALUES ( 'Management', 'Management', @id)
 	END
 	ELSE
 	BEGIN
@@ -18,7 +18,7 @@ BEGIN
 			Description = ISNULL(@description, Description),
 			FoundedAt = ISNULL(@foundedAt, FoundedAt),
 			Branch = ISNULL(@branch, Branch)
-			WHERE Id = @cid
+			WHERE Id = @id
 	END
-	RETURN @cid
+	RETURN @id
 END

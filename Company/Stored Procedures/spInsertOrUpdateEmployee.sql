@@ -1,5 +1,5 @@
 ﻿CREATE PROCEDURE [dbo].[spInsertOrUpdateEmployee]
-	@eid int,
+	@id int,
 	@lastName nvarchar(128),
 	@firstName nvarchar(128),
 	@birthday datetime,
@@ -8,10 +8,10 @@
 	@employeeSince datetime
 AS
 BEGIN
-	IF (@eid IS NULL OR (SELECT COUNT(*) FROM Employee WHERE Id = @eid) = 0)
+	IF (@id IS NULL)
 	BEGIN
 		INSERT INTO Employee(LastName, FirstName, Birthday, Phone, Gender, EmployeeSince) VALUES (@lastName, @firstName, @birthday, @phone, @gender, @employeeSince)
-		SET @eid = SCOPE_IDENTITY()
+		SET @id = SCOPE_IDENTITY()
 	END
 	ELSE
 	BEGIN
@@ -21,7 +21,7 @@ BEGIN
 			Phone = ISNULL(@phone, Phone),
 			Gender = ISNULL(@gender, Gender),
 			EmployeeSince = ISNULL(@employeeSince, EmployeeSince)
-			WHERE Id = @eid
+			WHERE Id = @id
 	END
-	RETURN @eid
+	RETURN @id
 END

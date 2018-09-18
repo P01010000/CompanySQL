@@ -12,7 +12,7 @@ BEGIN
 	BEGIN
 		INSERT INTO Zip (Zip, CountryCode, Place) VALUES ( @zip, @countryCode, @place)
 	END
-	IF (@addressId IS NULL OR (SELECT Id FROM Address WHERE id = @addressId) IS NULL)
+	IF (@addressId IS NULL)
 	BEGIN
 		INSERT INTO Address(Street, Zip, CountryCode) VALUES (@street, @zip, @countryCode)
 		SET @addressId = SCOPE_IDENTITY()

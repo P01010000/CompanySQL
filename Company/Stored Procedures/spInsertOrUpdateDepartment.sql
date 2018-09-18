@@ -1,5 +1,5 @@
 ﻿CREATE PROCEDURE [dbo].[spInsertOrUpdateDepartment]
-	@did int,
+	@id int,
 	@name nvarchar(128),
 	@description nvarchar(128),
 	@supervisor int,
@@ -7,10 +7,10 @@
 	@companyId int
 AS
 BEGIN
-	IF (@did IS NULL OR (SELECT COUNT(*) FROM Employee WHERE Id = @did) = 0)
+	IF (@id IS NULL)
 	BEGIN
 		INSERT INTO Department(Name, Description, Supervisor, SuperDepartment, CompanyId) VALUES (@name, @description, @supervisor, @superDepartmemt, @companyId)
-		SET @did = SCOPE_IDENTITY()
+		SET @id = SCOPE_IDENTITY()
 	END
 	ELSE
 	BEGIN
@@ -19,7 +19,7 @@ BEGIN
 			Supervisor = ISNULL(@supervisor, Supervisor),
 			SuperDepartment = ISNULL(@superDepartmemt, SuperDepartment),
 			CompanyId = ISNULL(@companyId, CompanyId)
-			WHERE Id = @did
+			WHERE Id = @id
 	END
-	RETURN @did
+	RETURN @id
 END
